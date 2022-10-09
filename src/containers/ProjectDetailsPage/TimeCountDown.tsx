@@ -15,21 +15,21 @@ const TimeCountDown = () => {
         <span className="leading-none mt-1">Project launches in:</span>
       </div>
       <div className="flex space-x-5 sm:space-x-10">
-        <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-semibold">{timeLeft.days}</span>
+        <div className="flex flex-col ">
+          <span className="text-2xl sm:text-2xl font-semibold">{timeLeft.days}</span>
           <span className="sm:text-lg text-neutral-500 dark:text-neutral-400">Days</span>
         </div>
-        <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-semibold">{timeLeft.hours}</span>
+        <div className="flex flex-col ">
+          <span className="text-2xl sm:text-2xl font-semibold">{timeLeft.hours}</span>
           <span className="sm:text-lg text-neutral-500 dark:text-neutral-400">hours</span>
         </div>
-        <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-semibold">{timeLeft.minutes}</span>
-          <span className="sm:text-lg text-neutral-500 dark:text-neutral-400">mins</span>
+        <div className="flex flex-col ">
+          <span className="text-2xl sm:text-2xl font-semibold">{timeLeft.minutes}</span>
+          <span className="sm:text-lg text-neutral-500 dark:text-neutral-400">minutes</span>
         </div>
-        <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-semibold">{timeLeft.seconds}</span>
-          <span className="sm:text-lg text-neutral-500">secs</span>
+        <div className="flex flex-col ">
+          <span className="text-2xl sm:text-2xl font-semibold">{timeLeft.seconds}</span>
+          <span className="sm:text-lg text-neutral-500">seconds</span>
         </div>
       </div>
     </div>

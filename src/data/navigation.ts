@@ -5,27 +5,7 @@ const otherPageChildMenus: NavItemType[] = [
   {
     id: ncNanoId(),
     href: "/",
-    name: "Home Demo 1",
-  },
-  {
-    id: ncNanoId(),
-    href: "/home2",
-    name: "Home Demo 2",
-  },
-  {
-    id: ncNanoId(),
-    href: "/home3",
-    name: "Home Demo 3",
-  },
-  {
-    id: ncNanoId(),
-    href: "/page-collection",
-    name: "Collection page",
-  },
-  {
-    id: ncNanoId(),
-    href: "/page-search",
-    name: "Search page",
+    name: "Home",
   },
   {
     id: ncNanoId(),
@@ -34,8 +14,8 @@ const otherPageChildMenus: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/nft-detailt",
-    name: "NFT detailt",
+    href: "/project-details",
+    name: "Project Details",
   },
   {
     id: ncNanoId(),

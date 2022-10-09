@@ -15,13 +15,13 @@ import PageSubcription from "containers/PageSubcription/PageSubcription";
 import BlogPage from "containers/BlogPage/BlogPage";
 import BlogSingle from "containers/BlogPage/BlogSingle";
 import SiteHeader from "containers/SiteHeader";
-import NftDetailPage from "containers/NftDetailPage/NftDetailPage";
 import PageCollection from "containers/PageCollection";
 import PageSearch from "containers/PageSearch";
 import PageUploadItem from "containers/PageUploadItem";
 import PageConnectWallet from "containers/PageConnectWallet";
 import PageHome2 from "containers/PageHome/PageHome2";
 import PageHome3 from "containers/PageHome/PageHome3";
+import ProjectDetailsPage from "containers/ProjectDetailsPage/ProjectDetailsPage";
 
 export const pages: Page[] = [
   { path: "/", component: PageHome2 },
@@ -29,7 +29,7 @@ export const pages: Page[] = [
   { path: "/home2", component: PageHome },
   { path: "/home3", component: PageHome3 },
   { path: "/home-header-2", component: PageHome },
-  { path: "/nft-detailt", component: NftDetailPage },
+  { path: "/project-details", component: ProjectDetailsPage },
   { path: "/page-collection", component: PageCollection },
   { path: "/page-search", component: PageSearch },
   { path: "/page-author", component: AuthorPage },

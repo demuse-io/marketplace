@@ -5,7 +5,7 @@ export interface LocationStates {
   "/#"?: {};
   "/home2"?: {};
   "/home3"?: {};
-  "/nft-detailt"?: {};
+  "/project-details"?: {};
   "/page-collection"?: {};
   "/page-search"?: {};
   "/page-author"?: {};

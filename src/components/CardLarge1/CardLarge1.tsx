@@ -20,29 +20,15 @@ export interface CardLarge1Props {
   featuredImgUrl?: string;
 }
 
-const CardLarge1: FC<CardLarge1Props> = ({
-  className = "",
-  isShowing = true,
-  onClickNext = () => {},
-  onClickPrev = () => {},
-  featuredImgUrl = nftsLargeImgs[0],
-}) => {
-  const randomTitle = [
-    "Walking On Air ",
-    "Amazing Nature",
-    "Beautiful NFT",
-    "Lovely NFT",
-    "Wolf Face #1",
-  ];
+const CardLarge1: FC<CardLarge1Props> = ({ className = "", isShowing = true, onClickNext = () => {}, onClickPrev = () => {}, featuredImgUrl = nftsLargeImgs[0] }) => {
+  const randomTitle = ["Walking On Air ", "Amazing Nature", "Beautiful NFT", "Lovely NFT", "Wolf Face #1"];
   return (
-    <div
-      className={`nc-CardLarge1 nc-CardLarge1--hasAnimation relative flex flex-col-reverse lg:flex-row justify-end ${className}`}
-    >
+    <div className={`nc-CardLarge1 nc-CardLarge1--hasAnimation relative flex flex-col-reverse lg:flex-row justify-end ${className}`}>
       <div className="lg:absolute z-10 lg:left-0 lg:top-1/2 lg:transform lg:-translate-y-1/2 -mt-2 lg:mt-0 sm:px-5 lg:px-0 w-full lg:max-w-lg ">
         <div className="nc-CardLarge1__left p-4 sm:p-8 xl:py-14 md:px-10 bg-white dark:bg-neutral-900 shadow-lg rounded-3xl space-y-3 sm:space-y-8 ">
           {/* TITLE */}
           <h2 className="text-2xl lg:text-3xl 2xl:text-5xl font-semibold ">
-            <Link to={"/nft-detailt"} title="Walking On Air">
+            <Link to={"/project-details"} title="Walking On Air">
               {randomTitle[Math.floor(Math.random() * randomTitle.length)]}
             </Link>
           </h2>
@@ -75,15 +61,9 @@ const CardLarge1: FC<CardLarge1Props> = ({
           {/* PRICE */}
           <div className="pt-6">
             <div className="flex flex-col sm:flex-row items-baseline p-6 border-2 border-green-500 rounded-xl relative">
-              <span className="block absolute bottom-full translate-y-1.5 py-1 px-1.5 bg-white dark:bg-neutral-900 text-sm text-neutral-500 dark:text-neutral-400 ring ring-offset-0 ring-white dark:ring-neutral-900">
-                Current Bid
-              </span>
-              <span className="text-3xl xl:text-4xl font-semibold text-green-500">
-                1.000 ETH
-              </span>
-              <span className="text-lg text-neutral-400 sm:ml-3.5">
-                (≈ $3,221.22)
-              </span>
+              <span className="block absolute bottom-full translate-y-1.5 py-1 px-1.5 bg-white dark:bg-neutral-900 text-sm text-neutral-500 dark:text-neutral-400 ring ring-offset-0 ring-white dark:ring-neutral-900">Price per share</span>
+              <span className="text-3xl xl:text-4xl font-semibold text-green-500">12.500 USDC</span>
+              {/* <span className="text-lg text-neutral-400 sm:ml-3.5">(≈ $3,221.22)</span> */}
             </div>
           </div>
 
@@ -94,32 +74,23 @@ const CardLarge1: FC<CardLarge1Props> = ({
 
           {/* DESCRIPTION */}
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-            <ButtonPrimary href={"/nft-detailt"} className="flex-1">
-              Place a bid
+            <ButtonPrimary href={"/project-details"} className="flex-1">
+              Purchase 10 shares
             </ButtonPrimary>
-            <ButtonSecondary href={"/nft-detailt"} className="flex-1">
+            <ButtonSecondary href={"/project-details"} className="flex-1">
               View item
             </ButtonSecondary>
           </div>
         </div>
         <div className="p-4 sm:pt-8 sm:px-10 ">
-          <NextPrev
-            btnClassName="w-11 h-11 text-xl"
-            onClickNext={onClickNext}
-            onClickPrev={onClickPrev}
-          />
+          <NextPrev btnClassName="w-11 h-11 text-xl" onClickNext={onClickNext} onClickPrev={onClickPrev} />
         </div>
       </div>
 
       <div className="w-full lg:w-[64%] relative ">
         <div className="nc-CardLarge1__right ">
-          <Link to={"/nft-detailt"}>
-            <NcImage
-              containerClassName="aspect-w-1 aspect-h-1 relative"
-              className="absolute inset-0 object-cover rounded-3xl sm:rounded-[40px] border-4 sm:border-[14px] border-white dark:border-neutral-800"
-              src={featuredImgUrl}
-              alt={"title"}
-            />
+          <Link to={"/project-details"}>
+            <NcImage containerClassName="aspect-w-1 aspect-h-1 relative" className="absolute inset-0 object-cover rounded-3xl sm:rounded-[40px] border-4 sm:border-[14px] border-white dark:border-neutral-800" src={featuredImgUrl} alt={"title"} />
           </Link>
 
           {/* META TYPE */}

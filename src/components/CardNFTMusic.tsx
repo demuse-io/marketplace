@@ -19,13 +19,7 @@ export interface CardNFTMusicProps {
   title: string;
 }
 
-const CardNFTMusic: FC<CardNFTMusicProps> = ({
-  className = "",
-  isLiked,
-  featuredImage = nftsAbstracts[18],
-  audioSrc = "",
-  title = "NFT NFT"
-}) => {
+const CardNFTMusic: FC<CardNFTMusicProps> = ({ className = "", isLiked, featuredImage = nftsAbstracts[18], audioSrc = "", title = "NFT NFT" }) => {
   const [DEMO_NFT_ID] = React.useState(nanoid());
 
   const renderAvatars = () => {
@@ -86,7 +80,7 @@ const CardNFTMusic: FC<CardNFTMusicProps> = ({
           <ButtonPlayMusicRunningContainer className="relative z-10" nftId={DEMO_NFT_ID} renderDefaultBtn={() => renderListenButtonDefault()} renderPlayingBtn={() => renderListenButtonDefault("playing")} renderLoadingBtn={() => renderListenButtonDefault("loading")} />
         </div>
 
-        <Link to={"/nft-detailt"} className="block p-5 mt-5 bg-white dark:bg-neutral-800 shadow-xl dark:shadow-2xl rounded-3xl rounded-tl-none">
+        <Link to={"/project-details"} className="block p-5 mt-5 bg-white dark:bg-neutral-800 shadow-xl dark:shadow-2xl rounded-3xl rounded-tl-none">
           <div className="flex items-center justify-between">
             <h2 className={`text-lg font-semibold`}>{title}</h2>
             {renderAvatars()}
@@ -101,7 +95,7 @@ const CardNFTMusic: FC<CardNFTMusicProps> = ({
         </Link>
       </div>
 
-      <Link to={"/nft-detailt"} className="absolute inset-0 "></Link>
+      <Link to={"/project-details"} className="absolute inset-0 "></Link>
     </div>
   );
 };
