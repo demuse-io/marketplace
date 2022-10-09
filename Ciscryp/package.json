@@ -34,7 +34,8 @@
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
     "ethers":"^5.7.1",
-    "nft.storage":"^7.0.0"
+    "nft.storage":"^7.0.0",
+    "ipfs-core":"^0.16.1"
   },
   "scripts": {
     "start": "react-scripts start",

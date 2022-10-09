@@ -7,6 +7,9 @@ const nftStorage = new NFTStorage({ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 export const presaleContract = (signer: any) =>
   new ethers.Contract(presaleAddress, presaleAbi, signer);
 
+export const uploadNFT = () => {
+    
+}
 export const mint = async () => {
 
 

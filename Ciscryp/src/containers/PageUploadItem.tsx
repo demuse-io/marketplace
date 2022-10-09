@@ -1,4 +1,3 @@
-import Label from "components/Label/Label";
 import React, { FC, useState } from "react";
 import ButtonPrimary from "shared/Button/ButtonPrimary";
 import Input from "shared/Input/Input";
@@ -6,7 +5,8 @@ import Textarea from "shared/Textarea/Textarea";
 import { Helmet } from "react-helmet";
 import FormItem from "components/FormItem";
 import { nftsImgs } from "contains/fakeData";
-import { presaleAbi } from "abis/presale.abi";
+import { create } from 'ipfs-core'
+
 export interface PageUploadItemProps {
   className?: string;
 }
@@ -40,10 +40,41 @@ const plans = [
 
 const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
   const [selected, setSelected] = useState(plans[1]);
+  const [cid, setCID] = useState('');
 
   async function mintPresale() {
     // presaleContract()
   }
+  const saveToIpfsWithFilename = async ([file]: [any]) => {
+    const fileDetails = {
+      content: file
+    }
+
+    const options = {
+      progress: (prog: any) => console.log(`received: ${prog}`)
+    }
+
+    try {
+      const repoPath = `ipfs-${Math.random()}`
+      const ipfs = await create({ repo: repoPath });
+      const added = await ipfs.add(fileDetails, options)
+
+      const uri ='https://ipfs.io/ipfs/' + added.cid.toString();
+      setCID(added.cid.toString())
+      console.log(uri);
+    } catch (err: any) {
+      // setError(err.message)
+    }
+  }
+
+  const captureFile = async (event: any) => {
+    event.stopPropagation()
+    event.preventDefault()
+
+    const fileName = await saveToIpfsWithFilename(event.target.files);
+    return fileName;
+  }
+
   return (
     <div
       className={`nc-PageUploadItem ${className}`}
@@ -98,16 +129,17 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
                       >
                         <span>Upload a file</span>
                         <input
-                          id="file-upload"
-                          name="file-upload"
-                          type="file"
-                          className="sr-only"
-                        />
+                        id="file-upload"
+                        name="file-upload"
+                        type="file"
+                        className="sr-only"
+                        onChange={captureFile}
+                      />
                       </label>
                       <p className="pl-1">or drag and drop</p>
                     </div>
                     <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                      PNG, JPG, GIF up to 10MB
+                      PNG, JPG, GIF, MP3, MKV, MP4, WAV
                     </p>
                   </div>
                 </div>
@@ -116,7 +148,7 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
 
             {/* ---- */}
             <FormItem label="Item Name">
-              <Input defaultValue="NFT name" />
+              <Input placeholder="Awesome song name" />
             </FormItem>
 
             {/* ---- */}
