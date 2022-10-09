@@ -13,7 +13,7 @@ const typeOfProperty = [
   {
     name: "Released",
     description: "Finished projects ready to earn royalties",
-    checked: true,
+    checked: false,
   },
 ];
 

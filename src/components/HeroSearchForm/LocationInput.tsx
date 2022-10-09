@@ -71,7 +71,7 @@ const LocationInput: FC<LocationInputProps> = ({ defaultValue, autoFocus = false
       <>
         <h3 className="block mt-2 sm:mt-0 px-4 sm:px-8 font-semibold text-base sm:text-lg text-neutral-800 dark:text-neutral-100">Recent searches</h3>
         <div className="mt-4">
-          {["Awesome NFT", "Bear face #1133", "Bear face #1222", "Bear face #1322"].map((item) => (
+          {["Nat Simons", "Berto Rojo", "The Soft Moon", "Larry June"].map((item) => (
             <span onClick={() => handleSelectLocation(item)} key={item} className="flex px-4 -my-1.5 sm:px-8 items-center space-x-3 sm:space-x-4 py-4 sm:py-5 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer">
               <span className="block text-neutral-400">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 sm:h-6 w-4 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,7 +89,7 @@ const LocationInput: FC<LocationInputProps> = ({ defaultValue, autoFocus = false
   const renderSearchValue = () => {
     return (
       <>
-        {["Bear face #1111", "Bear face #1133", "Bear face #1222", "Bear face #1322"].map((item) => (
+        {["Nat Simons", "Berto Rojo", "Sama' Abdulhadi", "Voodoo Glow Skulls"].map((item) => (
           <span onClick={() => handleSelectLocation(item)} key={item} className="flex px-4 sm:px-8 -my-1 items-center space-x-3 sm:space-x-4 py-4 sm:py-5 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer">
             <span className="block text-neutral-400">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
