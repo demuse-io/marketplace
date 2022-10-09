@@ -4,57 +4,46 @@ import Input from "shared/Input/Input";
 import Textarea from "shared/Textarea/Textarea";
 import { Helmet } from "react-helmet";
 import FormItem from "components/FormItem";
-import { nftsImgs } from "contains/fakeData";
 import { create } from "ipfs-core";
-
+import { storeAsBlob } from "utils/nftStorage";
+import { mintPresale } from "contracts/presale.contract";
+import { ethers } from "ethers";
 export interface PageUploadItemProps {
   className?: string;
 }
 
-const plans = [
-  {
-    name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[0],
-  },
-  {
-    name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[1],
-  },
-  {
-    name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[2],
-  },
-  {
-    name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[3],
-  },
-  {
-    name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[4],
-  },
-  {
-    name: "Crypto Legend - Professor",
-    featuredImage: nftsImgs[5],
-  },
-];
-
 const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
-  const [selected, setSelected] = useState(plans[1]);
   const [cid, setCID] = useState("");
 
-  const [shares, setShares] = useState("");
+  const [shares, setShares] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [description, setDescription] = useState('');
+  const [name, setName] = useState('');
 
   const sharesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setShares(e.target.value);
+    setShares(+e.target.value);
   };
-
+  const totalAmountChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTotalAmount(+e.target.value);
+  };
+  
+  const descriptionChange = (e: any) => {
+    setDescription(e.target.value);
+  };
+  const nameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("shares", shares);
   };
 
-  async function mintPresale() {
-    // presaleContract()
+  async function upload() {
+    const metadata = await storeAsBlob({title: name, description, image: cid });
+    const provider = new ethers.providers.Web3Provider((window as any).ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    await mintPresale(signer, metadata, shares, totalAmount);
   }
   const saveToIpfsWithFilename = async ([file]: [any]) => {
     const fileDetails = {
@@ -123,7 +112,7 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
             </div>
             <form onSubmit={handleSubmit}>
               <FormItem label="Item Name">
-                <Input placeholder="Awesome song name" />
+                <Input placeholder="Awesome song name" onChange={nameChange}/>
               </FormItem>
 
               <FormItem
@@ -134,7 +123,7 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
                   </div>
                 }
               >
-                <Textarea rows={6} className="mt-1.5" placeholder="..." />
+                <Textarea rows={6} className="mt-1.5" placeholder="..." onChange={descriptionChange}/>
               </FormItem>
 
               <div className="w-full border-b-2 border-neutral-100 dark:border-neutral-700"></div>
@@ -144,12 +133,12 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
                   <Input placeholder="20%" value={shares} onChange={sharesChange} />
                 </FormItem>
                 <FormItem label="Total amount to crowdfund">
-                  <Input placeholder="$1000" />
+                  <Input placeholder="$1000" onChange={totalAmountChanges}/>
                 </FormItem>
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row space-y-3 sm:space-y-0 space-x-0 sm:space-x-3 ">
-                <ButtonPrimary className="flex-1" onClick={() => mintPresale()}>
+                <ButtonPrimary className="flex-1" onClick={() => upload()}>
                   Upload item
                 </ButtonPrimary>
                 {/* <ButtonSecondary className="flex-1">Preview item</ButtonSecondary> */}
