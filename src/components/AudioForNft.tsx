@@ -10,7 +10,12 @@ interface AudioForNftProps {
   nftId: string;
 }
 
-const AudioForNft: FC<AudioForNftProps> = ({ nftId, className = "absolute opacity-0 ", src = "https://bafybeihisyc6owbxqeppd3ov6zqgp2wh6pc3k7qhmnhhzblx7jpkflupby.ipfs.dweb.link/" }) => {
+const AudioForNft: FC<AudioForNftProps> = ({
+  nftId,
+  className = "absolute opacity-0 ",
+  src = "https://ipfs.io/ipfs/QmdzZybT2R6uyrVBr7fDNv1hhtESSxst6RtdCW22bmqhd7",
+  // src="https://ipfs.io/ipfs/QmV5nidjLeBZhjnmXVb6CoDhT7sotGfpEngj84zVuh3mYA"
+}) => {
   const currentMediaRunning = useAppSelector(selectCurrentMediaRunning);
 
   let [isShowing, setIsShowing] = useState(true);

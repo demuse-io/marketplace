@@ -15,3 +15,22 @@ export const mintPresale = async (signer: any, metadata: string, shares: number,
   console.log(tx);
 
 };
+
+
+export const fetchPresale = async (signer: any, tokenId: number) => {
+  try{
+    const tokenURI = await presaleContract(signer).tokenURI(tokenId);
+    console.log(tokenURI)
+    if(tokenURI) {
+      const uri = tokenURI.replace('ipfs://', 'https://ipfs.io/ipfs/')
+      const resp = await fetch(uri);
+      const a = await resp.json();
+      return a;
+    } else 
+      return undefined;
+  } catch {
+    return undefined;
+  }
+  
+
+};

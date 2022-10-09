@@ -15,10 +15,17 @@ export interface CardNFTMusicProps {
   className?: string;
   featuredImage?: string;
   isLiked?: boolean;
-  src?: string;
+  audioSrc: string;
+  title: string;
 }
 
-const CardNFTMusic: FC<CardNFTMusicProps> = ({ className = "", isLiked, featuredImage = nftsAbstracts[18], src }) => {
+const CardNFTMusic: FC<CardNFTMusicProps> = ({
+  className = "",
+  isLiked,
+  featuredImage = nftsAbstracts[18],
+  audioSrc = "",
+  title = "NFT NFT"
+}) => {
   const [DEMO_NFT_ID] = React.useState(nanoid());
 
   const renderAvatars = () => {
@@ -56,7 +63,7 @@ const CardNFTMusic: FC<CardNFTMusicProps> = ({ className = "", isLiked, featured
   return (
     <div className={`nc-CardNFTMusic relative group ${className}`} data-nc-id="CardNFTMusic">
       {/* AUDIO MEDiA */}
-      <AudioForNft nftId={DEMO_NFT_ID} src={src} />
+      <AudioForNft nftId={DEMO_NFT_ID} src={audioSrc} />
 
       <div className="">
         <NcImage containerClassName="block aspect-w-12 aspect-h-10 w-full h-0 rounded-3xl overflow-hidden z-0" src={featuredImage} className="object-cover w-full h-full group-hover:scale-[1.03] transition-transform duration-300 ease-in-out" />
@@ -81,14 +88,16 @@ const CardNFTMusic: FC<CardNFTMusicProps> = ({ className = "", isLiked, featured
 
         <Link to={"/nft-detailt"} className="block p-5 mt-5 bg-white dark:bg-neutral-800 shadow-xl dark:shadow-2xl rounded-3xl rounded-tl-none">
           <div className="flex items-center justify-between">
-            <h2 className={`text-lg font-semibold`}>NFT music #1132</h2>
+            <h2 className={`text-lg font-semibold`}>{title}</h2>
             {renderAvatars()}
           </div>
 
-          <div className="w-full mt-1.5 flex justify-between items-end ">
-            <Prices labelText="Price" labelTextClassName="bg-white dark:bg-neutral-800 " />
-            <span className="block text-neutral-500 dark:text-neutral-400 text-xs">{Math.floor(Math.random() * 90) + 10} in stock</span>
-          </div>
+          {/* <div className="w-full mt-1.5 flex justify-between items-end ">
+            <Prices
+              labelText="Price"
+              labelTextClassName="bg-white dark:bg-neutral-800 "
+            />
+          </div> */}
         </Link>
       </div>
 
