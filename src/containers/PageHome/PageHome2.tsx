@@ -19,7 +19,7 @@ function PageHome() {
   return (
     <div className="nc-PageHome relative overflow-hidden">
       <Helmet>
-        <title>Ciscryp || NFT Marketplace Template</title>
+        <title>Demuse || Investing for culture and profit</title>
       </Helmet>
       {/* GLASSMOPHIN */}
       <BgGlassmorphism />
@@ -46,11 +46,7 @@ function PageHome() {
         {/* SECTION */}
         <div className="relative py-20 lg:py-28">
           <BackgroundSection />
-          <SectionGridAuthorBox
-            sectionStyle="style2"
-            data={Array.from("11111111")}
-            boxCard="box4"
-          />
+          <SectionGridAuthorBox sectionStyle="style2" data={Array.from("11111111")} boxCard="box4" />
         </div>
 
         {/* SECTION 4 */}
