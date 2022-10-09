@@ -14,7 +14,7 @@ export default function AvatarDropdown() {
               className={`inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               <Avatar
-                imgUrl={avatarImgs[7]}
+                imgUrl="https://lens.infura-ipfs.io/ipfs/QmPJwaN6eqVCA4e2oUMdjxEza6qRAMfpFTVpsGCtC2bUKX"
                 sizeClass="w-8 h-8 sm:w-9 sm:h-9"
               />
             </Popover.Button>
@@ -31,11 +31,11 @@ export default function AvatarDropdown() {
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid grid-cols-1 gap-6 bg-white dark:bg-neutral-800 py-7 px-6">
                     <div className="flex items-center space-x-3">
-                      <Avatar imgUrl={avatarImgs[7]} sizeClass="w-12 h-12" />
+                      <Avatar imgUrl="https://lens.infura-ipfs.io/ipfs/QmPJwaN6eqVCA4e2oUMdjxEza6qRAMfpFTVpsGCtC2bUKX" sizeClass="w-12 h-12" />
 
                       <div className="flex-grow">
-                        <h4 className="font-semibold">Eden Tuan</h4>
-                        <p className="text-xs mt-0.5">0xc4c16ab5ac7d...b21a</p>
+                        <h4 className="font-semibold">migrenaa.lens</h4>
+                        <p className="text-xs mt-0.5">0xCa05bcE175e...51d9</p>
                       </div>
                     </div>
 
