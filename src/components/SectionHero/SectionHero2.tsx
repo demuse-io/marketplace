@@ -18,7 +18,7 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "", children }) => {
             Take part in making your favorite music a reality.
             <br /> Discover emerging artists and forge a path to their success. Invest in projects before they begin and enjoy the royalties once they are released.
           </span>
-          <ButtonPrimary>
+          {/* <ButtonPrimary>
             <span>Start your search</span>
             <span>
               <svg className="w-5 h-5 ml-2.5" viewBox="0 0 24 24" fill="none">
@@ -26,14 +26,14 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "", children }) => {
                 <path d="M22 22L20 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-          </ButtonPrimary>
+          </ButtonPrimary> */}
         </div>
         <div className="flex-grow">
           <img className="w-full" src={imagePng} alt="hero" />
         </div>
       </div>
 
-      <div className="z-10 mb-12 lg:mb-0 lg:-mt-20 xl:-mt-48 w-full">
+      <div className="z-10 mb-12 lg:mb-0 w-full">
         <HeroSearchForm />
       </div>
     </div>
