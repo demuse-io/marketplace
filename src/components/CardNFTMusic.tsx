@@ -15,12 +15,16 @@ export interface CardNFTMusicProps {
   className?: string;
   featuredImage?: string;
   isLiked?: boolean;
+  audioSrc: string;
+  title: string;
 }
 
 const CardNFTMusic: FC<CardNFTMusicProps> = ({
   className = "",
   isLiked,
   featuredImage = nftsAbstracts[18],
+  audioSrc = "",
+  title = "NFT NFT"
 }) => {
   const [DEMO_NFT_ID] = React.useState(nanoid());
 
@@ -98,7 +102,7 @@ const CardNFTMusic: FC<CardNFTMusicProps> = ({
       data-nc-id="CardNFTMusic"
     >
       {/* AUDIO MEDiA */}
-      <AudioForNft nftId={DEMO_NFT_ID} />
+      <AudioForNft nftId={DEMO_NFT_ID} src={audioSrc} />
 
       <div className="">
         <NcImage
@@ -136,19 +140,16 @@ const CardNFTMusic: FC<CardNFTMusicProps> = ({
           className="block p-5 mt-5 bg-white dark:bg-neutral-800 shadow-xl dark:shadow-2xl rounded-3xl rounded-tl-none"
         >
           <div className="flex items-center justify-between">
-            <h2 className={`text-lg font-semibold`}>NFT music #1132</h2>
+            <h2 className={`text-lg font-semibold`}>{title}</h2>
             {renderAvatars()}
           </div>
 
-          <div className="w-full mt-1.5 flex justify-between items-end ">
+          {/* <div className="w-full mt-1.5 flex justify-between items-end ">
             <Prices
               labelText="Price"
               labelTextClassName="bg-white dark:bg-neutral-800 "
             />
-            <span className="block text-neutral-500 dark:text-neutral-400 text-xs">
-              {Math.floor(Math.random() * 90) + 10} in stock
-            </span>
-          </div>
+          </div> */}
         </Link>
       </div>
 

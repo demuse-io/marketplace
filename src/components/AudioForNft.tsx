@@ -13,7 +13,8 @@ interface AudioForNftProps {
 const AudioForNft: FC<AudioForNftProps> = ({
   nftId,
   className = "absolute opacity-0 ",
-  src = "./music.mp3",
+  src = "https://ipfs.io/ipfs/QmdzZybT2R6uyrVBr7fDNv1hhtESSxst6RtdCW22bmqhd7",
+  // src="https://ipfs.io/ipfs/QmV5nidjLeBZhjnmXVb6CoDhT7sotGfpEngj84zVuh3mYA"
 }) => {
   const currentMediaRunning = useAppSelector(selectCurrentMediaRunning);
 
