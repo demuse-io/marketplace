@@ -1,8 +1,7 @@
 {
-  "name": "ciscryp",
+  "name": "demuse",
   "version": "0.2.1",
-  "homepage": "https://chisnghiax.com/ciscryp",
-  "private": true,
+  "homepage": "https://www.demuse.app",
   "dependencies": {
     "@glidejs/glide": "^3.5.2",
     "@headlessui/react": "^1.6.6",
