@@ -12,42 +12,23 @@ export interface SectionSubscribe2Props {
 
 const SectionSubscribe2: FC<SectionSubscribe2Props> = ({ className = "" }) => {
   return (
-    <div
-      className={`nc-SectionSubscribe2 relative flex flex-col lg:flex-row lg:items-center ${className}`}
-      data-nc-id="SectionSubscribe2"
-    >
+    <div className={`nc-SectionSubscribe2 relative flex flex-col lg:flex-row lg:items-center ${className}`} data-nc-id="SectionSubscribe2">
       <div className="flex-shrink-0 mb-10 lg:mb-0 lg:mr-10 lg:w-2/5">
-        <h2 className="font-semibold text-4xl">Never miss a drop!</h2>
-        <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
-          Subcribe to our super-exclusive drop list and be the first to know
-          abour upcoming drops
-        </span>
+        <h2 className="font-semibold text-4xl">Never miss an opportunity!</h2>
+        <span className="block mt-5 text-neutral-500 dark:text-neutral-400">Subcribe to our super-exclusive mailing list and be the first to know abour upcoming projects</span>
         <ul className="space-y-4 mt-10">
           <li className="flex items-center space-x-4">
             <Badge name="01" />
-            <span className="font-medium text-neutral-700 dark:text-neutral-300">
-              Get more discount
-            </span>
+            <span className="font-medium text-neutral-700 dark:text-neutral-300">We don't spam</span>
           </li>
           <li className="flex items-center space-x-4">
             <Badge color="red" name="02" />
-            <span className="font-medium text-neutral-700 dark:text-neutral-300">
-              Get premium magazines
-            </span>
+            <span className="font-medium text-neutral-700 dark:text-neutral-300">You're not musubi</span>
           </li>
         </ul>
         <form className="mt-10 relative max-w-sm">
-          <Input
-            required
-            aria-required
-            placeholder="Enter your email"
-            type="email"
-            rounded="rounded-full"
-          />
-          <ButtonCircle
-            type="submit"
-            className="absolute transform top-1/2 -translate-y-1/2 right-1"
-          >
+          <Input required aria-required placeholder="Enter your email" type="email" rounded="rounded-full" />
+          <ButtonCircle type="submit" className="absolute transform top-1/2 -translate-y-1/2 right-1">
             <ArrowSmRightIcon className="w-6 h-6" />
           </ButtonCircle>
         </form>
