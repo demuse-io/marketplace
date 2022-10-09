@@ -10,19 +10,13 @@ interface AudioForNftProps {
   nftId: string;
 }
 
-const AudioForNft: FC<AudioForNftProps> = ({
-  nftId,
-  className = "absolute opacity-0 ",
-  src = "./music.mp3",
-}) => {
+const AudioForNft: FC<AudioForNftProps> = ({ nftId, className = "absolute opacity-0 ", src = "https://bafybeihisyc6owbxqeppd3ov6zqgp2wh6pc3k7qhmnhhzblx7jpkflupby.ipfs.dweb.link/" }) => {
   const currentMediaRunning = useAppSelector(selectCurrentMediaRunning);
 
   let [isShowing, setIsShowing] = useState(true);
   let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 200);
 
-  const IS_PLAY =
-    currentMediaRunning.nftId === nftId &&
-    currentMediaRunning.state === "playing";
+  const IS_PLAY = currentMediaRunning.nftId === nftId && currentMediaRunning.state === "playing";
 
   useEffect(() => {
     if (currentMediaRunning.state === "paused") {

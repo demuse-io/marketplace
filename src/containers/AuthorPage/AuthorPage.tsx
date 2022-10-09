@@ -119,8 +119,8 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
                 <Tab.Panel className="">
                   {/* LOOP ITEMS */}
                   <div className={`grid grid-cols-1 sm:grid-cols-6 gap-6 2xl:gap-8`}>
-                    <CardNFTMusic featuredImage="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80" className="sm:col-span-3 xl:col-span-2" />
-                    <CardNFTMusic featuredImage="https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80" className="sm:col-span-3 xl:col-span-2" />
+                    <CardNFTMusic src="https://bafybeihisyc6owbxqeppd3ov6zqgp2wh6pc3k7qhmnhhzblx7jpkflupby.ipfs.dweb.link/" featuredImage="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80" className="sm:col-span-3 xl:col-span-2" />
+                    <CardNFTMusic src="https://ipfs.io/ipfs/QmVgXVT8CntBiyuMWN6JoJm1Y4aZQsdymZHx1ezo9nMz5M" featuredImage="https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80" className="sm:col-span-3 xl:col-span-2" />
                     <div className="grid grid-rows-3 gap-6 xl:gap-8 sm:col-span-6 xl:col-span-2">
                       {[nftsAbstracts[2], nftsAbstracts[4], nftsAbstracts[7]].map((p, index) => (
                         <CardNFTMusic2 featuredImage={p} key={index} />
