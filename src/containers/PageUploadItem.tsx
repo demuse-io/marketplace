@@ -6,8 +6,9 @@ import { Helmet } from "react-helmet";
 import FormItem from "components/FormItem";
 import { create } from "ipfs-core";
 import { storeAsBlob } from "utils/nftStorage";
-import { mintPresale } from "contracts/presale.contract";
+import { mintPresale, publishOnLense } from "contracts/presale.contract";
 import { ethers } from "ethers";
+import { authenticate } from "lens/lens-api";
 export interface PageUploadItemProps {
   className?: string;
 }
@@ -44,6 +45,8 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
     await mintPresale(signer, metadata, shares, totalAmount);
+    const accessToken = await authenticate();
+    publishOnLense(signer, 1, accessToken);
   }
   const saveToIpfsWithFilename = async ([file]: [any]) => {
     const fileDetails = {

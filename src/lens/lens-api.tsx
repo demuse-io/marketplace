@@ -1,5 +1,7 @@
+import { ethers } from "ethers";
 import { createClient } from "urql";
-
+import { LENS_HUB_ABI, LENS_HUB_CONTRACT } from "./config";
+import "./lens-utils";
 const API_URL = "https://api.lens.dev";
 
 // Setup the client to use the API_URL as the base URL
@@ -346,3 +348,22 @@ export const hasTransactionBeenIndexed = (txHash: string) => `query HasTxHashBee
 	}
   }
 `;
+
+export const lensHub = (signer: any) => new ethers.Contract(LENS_HUB_CONTRACT, LENS_HUB_ABI, signer);
+
+
+export const authenticate = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const addr = await signer.getAddress();
+    const response = await client.query(challenge(addr)).toPromise();
+    const messageToSign = response.data.challenge.text;
+    const signature = await signer.signMessage(messageToSign);
+
+    console.log("calling login");
+    const response2 = await client.mutation(login(addr, signature)).toPromise();
+
+	return response2.data.authenticate.accessToken;
+  };
