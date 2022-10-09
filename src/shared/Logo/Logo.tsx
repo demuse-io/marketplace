@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logoImg from "images/logo_black_pink.png";
+import logoImg from "images/logo_white.png";
 
 export interface LogoProps {
   img?: string;

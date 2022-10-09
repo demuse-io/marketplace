@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Page } from "./types";
 import ScrollToTop from "./ScrollToTop";
 import Footer from "shared/Footer/Footer";
@@ -47,7 +47,7 @@ export const pages: Page[] = [
 
 const MyRoutes = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop />
       <SiteHeader />
       <Routes>
@@ -58,7 +58,7 @@ const MyRoutes = () => {
         <Route element={<Page404 />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
