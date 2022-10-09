@@ -18,35 +18,19 @@ export interface SectionGridAuthorBoxProps {
   data?: any[];
 }
 
-const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
-  className = "",
-  boxCard = "box1",
-  sectionStyle = "style1",
-  gridClassName = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
-  data = Array.from("11111111"),
-}) => {
+const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({ className = "", boxCard = "box1", sectionStyle = "style1", gridClassName = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4", data = Array.from("11111111") }) => {
   const [tabActive, setTabActive] = React.useState("Popular");
 
   const renderCard = (index: number) => {
     switch (boxCard) {
       case "box1":
-        return (
-          <CardAuthorBox
-            index={index < 3 ? index + 1 : undefined}
-            key={index}
-          />
-        );
+        return <CardAuthorBox index={index < 3 ? index + 1 : undefined} key={index} />;
       case "box2":
         return <CardAuthorBox2 key={index} />;
       case "box3":
         return <CardAuthorBox3 key={index} />;
       case "box4":
-        return (
-          <CardAuthorBox4
-            authorIndex={index < 3 ? index + 1 : undefined}
-            key={index}
-          />
-        );
+        return <CardAuthorBox4 authorIndex={index < 3 ? index + 1 : undefined} key={index} />;
 
       default:
         return null;
@@ -82,18 +66,10 @@ const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
   const renderHeading2 = () => {
     return (
       <div>
-        <Heading
-          className="mb-12 lg:mb-14 text-neutral-900 dark:text-neutral-50"
-          fontClass="text-3xl md:text-4xl 2xl:text-5xl font-semibold"
-          isCenter
-          desc=""
-        >
-          Top List Creators.
+        <Heading className="mb-12 lg:mb-14 text-neutral-900 dark:text-neutral-50" fontClass="text-3xl md:text-4xl 2xl:text-5xl font-semibold" isCenter desc="">
+          Top Tier Artists.
         </Heading>
-        <Nav
-          className="p-1 bg-white dark:bg-neutral-800 rounded-full shadow-lg"
-          containerClassName="mb-12 lg:mb-14 relative flex justify-center w-full text-sm md:text-base"
-        >
+        <Nav className="p-1 bg-white dark:bg-neutral-800 rounded-full shadow-lg" containerClassName="mb-12 lg:mb-14 relative flex justify-center w-full text-sm md:text-base">
           {[
             {
               name: "Popular",
@@ -125,16 +101,9 @@ const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
                `,
             },
           ].map((item, index) => (
-            <NavItem2
-              key={index}
-              isActive={tabActive === item.name}
-              onClick={() => setTabActive(item.name)}
-            >
+            <NavItem2 key={index} isActive={tabActive === item.name} onClick={() => setTabActive(item.name)}>
               <div className="flex items-center justify-center sm:space-x-2.5 text-xs sm:text-sm ">
-                <span
-                  className="hidden sm:inline-block"
-                  dangerouslySetInnerHTML={{ __html: item.icon }}
-                ></span>
+                <span className="hidden sm:inline-block" dangerouslySetInnerHTML={{ __html: item.icon }}></span>
                 <span>{item.name}</span>
               </div>
             </NavItem2>
@@ -145,14 +114,9 @@ const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
   };
 
   return (
-    <div
-      className={`nc-SectionGridAuthorBox relative ${className}`}
-      data-nc-id="SectionGridAuthorBox"
-    >
+    <div className={`nc-SectionGridAuthorBox relative ${className}`} data-nc-id="SectionGridAuthorBox">
       {sectionStyle === "style1" ? renderHeading1() : renderHeading2()}
-      <div className={`grid gap-4 md:gap-7 ${gridClassName}`}>
-        {data.map((_, index) => renderCard(index))}
-      </div>
+      <div className={`grid gap-4 md:gap-7 ${gridClassName}`}>{data.map((_, index) => renderCard(index))}</div>
       <div className="mt-16 flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-5">
         <ButtonSecondary>Show me more </ButtonSecondary>
         <ButtonPrimary>Become a author</ButtonPrimary>

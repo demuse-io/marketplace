@@ -21,9 +21,7 @@ const AudioForNft: FC<AudioForNftProps> = ({
   let [isShowing, setIsShowing] = useState(true);
   let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 200);
 
-  const IS_PLAY =
-    currentMediaRunning.nftId === nftId &&
-    currentMediaRunning.state === "playing";
+  const IS_PLAY = currentMediaRunning.nftId === nftId && currentMediaRunning.state === "playing";
 
   useEffect(() => {
     if (currentMediaRunning.state === "paused") {
