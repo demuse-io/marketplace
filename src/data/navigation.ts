@@ -113,10 +113,5 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
     name: "Discover",
     type: "dropdown",
     children: otherPageChildMenus,
-  },
-  {
-    id: ncNanoId(),
-    href: "/page-upload-item",
-    name: "Help center",
-  },
+  }
 ];
