@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import BackgroundSection from "components/BackgroundSection/BackgroundSection";
 import NcImage from "shared/NcImage/NcImage";
@@ -17,21 +17,35 @@ import { Tab } from "@headlessui/react";
 import CardAuthorBox3 from "components/CardAuthorBox3/CardAuthorBox3";
 import ArchiveFilterListBox from "components/ArchiveFilterListBox";
 import SectionGridAuthorBox from "components/SectionGridAuthorBox/SectionGridAuthorBox";
+import { client, getProfile } from "lens/lens-api";
 
 export interface AuthorPageProps {
   className?: string;
 }
 
 const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
+  let [profile, setProfile] = useState({});
   let [categories] = useState([
-    "Collectibles",
     "Created",
-    "Liked",
-    "Following",
-    "Followers",
   ]);
 
+  useEffect(() => {
+  // Get the recommended profiles
+  const fetchProfile = async () => {
+    const profileId = "0xa9a5";
+    const returnedProfile = await client
+      .query(getProfile, { id: profileId })
+      .toPromise();
+    // setProfiles([returnedProfile.data.profile]);
+    console.log(returnedProfile.data.profiles.items[0]);
+    setProfile(returnedProfile.data.profiles.items[0]);
+  };
+
+  fetchProfile();
+  },[]);
+
   return (
+    profile && profile as any &&
     <div className={`nc-AuthorPage  ${className}`} data-nc-id="AuthorPage">
       <Helmet>
         <title>Creator || Ciscryp NFT Template</title>
@@ -50,14 +64,14 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
           <div className="relative bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 p-5 lg:p-8 rounded-3xl md:rounded-[40px] shadow-xl flex flex-col md:flex-row">
             <div className="w-32 lg:w-44 flex-shrink-0 mt-12 sm:mt-0">
               <NcImage
-                src={nftsImgs[2]}
+                src={(profile as any).picture.original.url}
                 containerClassName="aspect-w-1 aspect-h-1 rounded-3xl overflow-hidden"
               />
             </div>
             <div className="pt-5 md:pt-1 md:ml-6 xl:ml-14 flex-grow">
               <div className="max-w-screen-sm ">
                 <h2 className="inline-flex items-center text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                  <span>Dony Herrera</span>
+                  <span>{(profile as any).handle}</span>
                   <VerifyIcon
                     className="ml-2"
                     iconClass="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"
@@ -65,7 +79,7 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
                 </h2>
                 <div className="flex items-center text-sm font-medium space-x-2.5 mt-2.5 text-green-600 cursor-pointer">
                   <span className="text-neutral-700 dark:text-neutral-300">
-                    4.0xc4c16ac453sa645a...b21a{" "}
+                    {(profile as any).ownedBy}
                   </span>
                   <svg width="20" height="21" viewBox="0 0 20 21" fill="none">
                     <path
@@ -86,8 +100,7 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
                 </div>
 
                 <span className="block mt-4 text-sm text-neutral-500 dark:text-neutral-400">
-                  Punk #4786 / An OG Cryptopunk Collector, hoarder of NFTs.
-                  Contributing to @ether_cards, an NFT Monetization Platform.
+                {(profile as any).bio}
                 </span>
               </div>
               <div className="mt-4 ">
