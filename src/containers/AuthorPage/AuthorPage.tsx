@@ -45,7 +45,7 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
   },[]);
 
   return (
-    profile && profile as any &&
+    profile && (profile as any).picture &&
     <div className={`nc-AuthorPage  ${className}`} data-nc-id="AuthorPage">
       <Helmet>
         <title>Creator || Ciscryp NFT Template</title>
